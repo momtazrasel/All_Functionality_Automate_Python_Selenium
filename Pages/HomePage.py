@@ -20,10 +20,13 @@ class HomePage:
     def send_keys(self, *locator, keys):
         self.driver.find_element(*locator).send_keys(keys)
 
-    def is_element_displayed(self,*locator):
-        elements = self.driver.find_elements(*locator)
-        if elements:
-            return elements[0].is_displayed()
-        return False
+    def assert_element_displayed(self, *locator, timeout=10):
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                lambda driver: self.driver.find_element(*locator).is_displayed()
+            )
+            # print(f"Element with locator '{locator}' is displayed.")
+        except TimeoutException:
+            self.fail(f"Element with locator '{locator}' is not displayed.")
 
 
