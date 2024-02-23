@@ -1,32 +1,16 @@
-from telnetlib import EC
-
-from selenium.common import TimeoutException, NoSuchElementException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
+from Locators.DemoBlazeLocators import SignUpLocator
+from Pages.PageObjectManager import PageObjectManager
 
 
-class HomePage:
+class HomePage(PageObjectManager):
     def __init__(self, driver):
         self.driver = driver
+        self.locator = SignUpLocator()
 
-    def click_element(self, *locator):
-        self.driver.find_element(*locator).click()
-
-    def verify_text(self, expected_text, *locator):
-        actual_txt = self.driver.find_element(*locator).text
-        assert actual_txt == expected_text, \
-            f"Expected '{expected_text}' but found '{actual_txt}' for signup button text."
-
-    def send_keys(self, *locator, keys):
-        self.driver.find_element(*locator).send_keys(keys)
-
-    def assert_element_displayed(self, *locator, timeout=10):
-        try:
-            WebDriverWait(self.driver, timeout).until(
-                lambda driver: self.driver.find_element(*locator).is_displayed()
-            )
-            # print(f"Element with locator '{locator}' is displayed.")
-        except TimeoutException:
-            self.fail(f"Element with locator '{locator}' is not displayed.")
-
+    def home_page(self):
+        # self.verify_text("Sign up", *self.locator.signUpTab)
+        # self.click_element(*self.locator.signUpTab)
+        self.assert_element_displayed(*self.locator.toolsQA)
+        self.scroll_down()
+        # self.assert_text_present("Sign Up", *self.locator.signUpTab)
 
