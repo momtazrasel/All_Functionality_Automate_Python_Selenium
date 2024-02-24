@@ -1,11 +1,11 @@
-from Locators.DemoBlazeLocators import SignUpLocator
+from Locators.Locators import SignUpLocator, AllLocator
 from Pages.PageObjectManager import PageObjectManager
 
 
 class HomePage(PageObjectManager):
     def __init__(self, driver):
         self.driver = driver
-        self.locator = SignUpLocator()
+        self.locator = AllLocator()
 
     def home_page(self):
         # self.verify_text("Sign up", *self.locator.signUpTab)
