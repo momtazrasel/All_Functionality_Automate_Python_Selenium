@@ -4,6 +4,7 @@ from Pages.PageObjectManager import PageObjectManager
 
 class AllElements(PageObjectManager):
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
         self.locator = AllLocator()
 

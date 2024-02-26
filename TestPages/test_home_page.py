@@ -1,4 +1,4 @@
-from Pages.BasePage import BaseClass
+from TestPages.BasePage import BaseClass
 from Pages.HomePage import HomePage
 
 

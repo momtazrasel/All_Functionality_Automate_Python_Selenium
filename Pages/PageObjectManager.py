@@ -2,7 +2,6 @@ from telnetlib import EC
 
 from selenium.common import TimeoutException, NoSuchElementException
 from selenium.webdriver import ActionChains, Keys
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
 
